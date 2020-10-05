@@ -30,12 +30,14 @@ SAi Tech Assignment of PHP/Laravel
     $ docker ps # then copy id from stdout.
     ```
 
-3. In "laravel7-news_web" container, copy .env file.
+3. In "laravel7-news_web" container, copy .env file.  
+   After that, install dependencies using composer.
 
     ```bash
     $ docker exec -it <container-id> bash
 
     # cp .env.example .env
+    # composer install
     # exit
     ```
 
