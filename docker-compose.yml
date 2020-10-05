@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  web:
+    build: .
+    ports:
+      - 8080:80
+    volumes:
+      - ./:/var/www
+    environment:
+      DB_HOST: mysql
+      DB_DATABASE: laravel-news
+      DB_USERNAME: root
+      DB_PASSWORD: secret
+    depends_on:
+      - mysql
+  mysql:
+    image: mysql:8.0
+    volumes:
+      - laravel-news:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: laravel-news
+      MYSQL_ROOT_PASSWORD: secret
+
+volumes:
+  laravel-news:
