@@ -6,15 +6,15 @@ SAi Tech Assignment of PHP/Laravel
 
 ## Docker images
 
-* php:7.4-apache  
-  https://hub.docker.com/_/php
-* mysql:8.0  
-  https://hub.docker.com/_/mysql
+-   php:7.4-apache  
+    https://hub.docker.com/_/php
+-   mysql:8.0  
+    https://hub.docker.com/_/mysql
 
 ## Framework
 
-* Laravel Framework 7.15.0  
-  https://laravel.com/docs/7.x/readme
+-   Laravel Framework 7.15.0  
+    https://laravel.com/docs/7.x/readme
 
 ## How to use
 
@@ -22,6 +22,12 @@ SAi Tech Assignment of PHP/Laravel
 
     ```bash
     $ docker-compose up -d --build
+    ```
+
+    or
+
+    ```bash
+    $ make build
     ```
 
 2. Copy CONTAINER ID of the container run up from the image, "laravel7-news_web".
@@ -43,3 +49,15 @@ SAi Tech Assignment of PHP/Laravel
 
 4. Launch your web browser and open http://localhost:8080/.  
    Press "Generate app key" button, then refresh the page.
+
+### docker up
+
+```bash
+$ make up
+```
+
+### docker stop
+
+```bash
+$ make down
+```
