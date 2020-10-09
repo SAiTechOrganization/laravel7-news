@@ -31,5 +31,6 @@
             </div>
             <hr>
         @endforeach
+        {{ $posts->links() }}
     </section>
 @endsection

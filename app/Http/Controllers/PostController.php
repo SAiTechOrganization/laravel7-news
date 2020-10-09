@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+    const PAGINATION_LIMIT = 10;
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +16,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderBy('created_at', 'desc')->get();
+        $posts = Post::orderBy('created_at', 'desc')->paginate(self::PAGINATION_LIMIT);
 
         return view('posts.index', [
             'posts' => $posts,
