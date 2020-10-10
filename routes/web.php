@@ -16,9 +16,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'PostController@index');
 
 Route::resource('posts', 'PostController')->only([
-  'index', 'store', 'show'
+    'index',
+    'show',
+    'store',
 ]);
 
 Route::resource('comments', 'CommentController')->only([
-  'store', 'destroy'
+    'store',
+    'destroy',
 ]);

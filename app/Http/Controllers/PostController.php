@@ -7,13 +7,16 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+    const PAGINATION_LIMIT = 10;
+
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
-    public function index() {
-        $posts = Post::orderBy('created_at', 'desc')->get();
+    public function index()
+    {
+        $posts = Post::orderBy('created_at', 'desc')->paginate(self::PAGINATION_LIMIT);
 
         return view('posts.index', [
             'posts' => $posts,
@@ -24,9 +27,10 @@ class PostController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         $this->validate(
             $request,
             [
@@ -42,10 +46,10 @@ class PostController extends Controller
             ]
         );
 
-        $post = new Post;
-        $post->title = $request->title;
-        $post->body  = $request->body;
-        $post->save();
+        Post::create([
+            'title' => $request->title,
+            'body'  => $request->body,
+        ]);
 
         return redirect()->back();
     }
@@ -53,12 +57,11 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  \App\Post $post
+     * @return \Illuminate\View\View
      */
-    public function show(int $id) {
-        $post = Post::find($id);
-
+    public function show(Post $post)
+    {
         $comments = $post->comments()->orderBy('created_at', 'desc')->get();
 
         return view('posts.show', [
