@@ -2,7 +2,7 @@
 
 ## About
 
-SAi Tech Assignment of PHP/Laravel
+SAiTech Assignment of PHP/Laravel
 
 ## Docker images
 
