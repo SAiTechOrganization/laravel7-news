@@ -17,8 +17,8 @@ Route::get('/', 'PostController@index');
 
 Route::resource('posts', 'PostController')->only([
     'index',
-    'show',
     'store',
+    'show',
 ]);
 
 Route::resource('comments', 'CommentController')->only([
