@@ -6,7 +6,7 @@
     <section class="form-post">
         <h2 class="content-header">さぁ、最新のニュースをシェアしましょう</h2>
         @include('common.validation_errors')
-        <form id="formPost" method="POST" action="{{ route('posts.index') }}" accept-charset="UTF-8">
+        <form id="formPost" method="POST" action="{{ route('posts.store') }}" accept-charset="UTF-8">
             @csrf
             <div class="input-title">
                 {{ Form::label('title', 'タイトル：') }}
